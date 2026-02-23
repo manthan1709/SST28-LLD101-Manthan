@@ -15,5 +15,14 @@ public class Main {
         );
 
         sys.checkout("student", order);
+
+        // Stretch: second invoice for staff
+        List<OrderLine> staffOrder = List.of(
+                new OrderLine("M1", 1),
+                new OrderLine("C1", 1),
+                new OrderLine("S1", 1)
+        );
+
+        sys.checkout("staff", staffOrder);
     }
 }
