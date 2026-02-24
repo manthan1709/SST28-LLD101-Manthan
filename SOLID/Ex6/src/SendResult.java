@@ -1,0 +1,17 @@
+public final class SendResult {
+    public final boolean ok;
+    public final String error; 
+
+    private SendResult(boolean ok, String error) {
+        this.ok = ok;
+        this.error = error;
+    }
+
+    public static SendResult ok() {
+        return new SendResult(true, null);
+    }
+
+    public static SendResult fail(String message) {
+        return new SendResult(false, message);
+    }
+}
