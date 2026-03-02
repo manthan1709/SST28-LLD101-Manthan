@@ -64,6 +64,6 @@ public class MetricsRegistry implements Serializable {
     // TODO: implement readResolve() to preserve singleton on deserialization
 
     public Object readResolve(){
-        return this.INSTANCE;
+        return MetricsRegistry.INSTANCE;
     }
 }
