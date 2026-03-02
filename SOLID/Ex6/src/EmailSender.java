@@ -2,13 +2,19 @@ public class EmailSender extends NotificationSender {
     public EmailSender(AuditLog audit) { super(audit); }
 
     @Override
-    public SendResult send(Notification n) {
+    public boolean isValid(Notification n) {
+        return n.email != null && n.email.contains("@");
+    }
 
-        String body = n.body;
-        if (body.length() > 40) body = body.substring(0, 40);
+    @Override
+    public void send(Notification n) {
+        if (!isValid(n)) {
+            System.out.println("EMAIL ERROR: invalid email address");
+            audit.add("email failed");
+            return;
+        }
 
-        System.out.println("EMAIL -> to=" + n.email + " subject=" + n.subject + " body=" + body);
+        System.out.println("EMAIL -> to=" + n.email + " subject=" + n.subject + " body=" + n.body);
         audit.add("email sent");
-        return SendResult.ok();
     }
 }
