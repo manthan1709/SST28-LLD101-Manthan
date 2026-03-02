@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
  */
 public final class Validation {
 
-    private static final Pattern EMAIL = Pattern.compile("^[^@\s]+@[^@\s]+\.[^@\s]+$");
+    private static final Pattern EMAIL = Pattern.compile("^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$");
     private static final Pattern TICKET_ID = Pattern.compile("^[A-Z0-9-]+$");
 
     private Validation() {}
@@ -17,7 +17,7 @@ public final class Validation {
     public static void requireNonBlank(String value, String fieldName) {
         if (value == null || value.trim().isEmpty()) {
             throw new IllegalArgumentException(fieldName + " must not be blank");
-        }
+        }   
     }
 
     public static void requireMaxLen(String value, int max, String fieldName) {
