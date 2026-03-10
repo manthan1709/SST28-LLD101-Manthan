@@ -9,11 +9,13 @@ package com.example.reports;
  * TODO (student):
  * - Convert this into the RealSubject behind a Proxy, or replace with RealReport.
  */
-public class ReportFile {
+public class ReportFile implements Report{
 
     private final String reportId;
     private final String title;
     private final String classification; // PUBLIC / FACULTY / ADMIN
+
+    private String content;
 
     public ReportFile(String reportId, String title, String classification) {
         this.reportId = reportId;
@@ -21,8 +23,11 @@ public class ReportFile {
         this.classification = classification;
     }
 
+    @Override
     public void display(User user) {
-        String content = loadFromDisk();
+        if (content == null) {
+            content = loadFromDisk(); 
+        }
         System.out.println("REPORT -> id=" + reportId
                 + " title=" + title
                 + " classification=" + classification
