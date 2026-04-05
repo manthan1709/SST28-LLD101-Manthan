@@ -1,0 +1,3 @@
+enum RequestType {
+  INTERNAL, EXTERNAL
+}
